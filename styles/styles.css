@@ -42,6 +42,7 @@ code {
 pre {
   color: var(--secondary-colour);
   border: 1px solid var(--secondary-colour);
+  border-radius: 0 0 2rem 0;
   padding: 1rem;
 }
 #output {
