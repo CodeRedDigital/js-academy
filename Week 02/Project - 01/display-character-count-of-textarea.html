@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <h1>Toggle Password Visibility</h1>
+      <h1>Character Count of Textarea</h1>
       <svg
         width="52"
         height="52"
@@ -44,6 +44,22 @@
     </header>
     <main>
       <!-- Project HTML Here -->
+      <label for="text">Enter your text below.</label>
+<textarea id="text"></textarea>
+
+<p>You've written <strong><span id="character-count">0</span> characters</strong>.</p>
+  <h2>Code</h2>
+  <pre>
+<span class="comment">// get the textarea being updated</span>
+const text = document.querySelector("#text");
+<span class="comment">// get the element that contains the counter</span>
+const counter = document.querySelector("#character-count");
+<span class="comment">// add an event listener to textarea</span>
+text.addEventListener("input", () => {
+  <span class="comment">// update the value of the counter to the length of the textarea content</span>
+  counter.innerText = text.value.length
+});
+  </pre>
     </main>
     <footer></footer>
     <script src="./index.js"></script>
