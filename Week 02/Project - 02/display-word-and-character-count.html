@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <h1>Toggle Password Visibility</h1>
+      <h1>Word & Character Count of Textarea</h1>
       <svg
         width="52"
         height="52"
@@ -44,6 +44,60 @@
     </header>
     <main>
       <!-- Project HTML Here -->
+      <label for="text">Enter your text below.</label>
+      <textarea id="text"></textarea>
+
+      <p>
+        You've written <strong><span id="word-count">0</span> words</strong> and
+        <strong><span id="character-count">0</span> characters</strong>.
+      </p>
+      <p>
+        You've <em>truly</em> written
+        <strong><span id="emoji-count">0</span> characters</strong>.
+      </p>
+      <h2>Code</h2>
+      <pre>
+<span class="comment">// get the textarea being updated</span>
+const text = document.querySelector("#text");
+<span class="comment">// get the element that contains the word counter</span>
+const wordCounter = document.querySelector("#word-count");
+<span class="comment">// get the element that contains the character counter</span>
+const counter = document.querySelector("#character-count");
+<span class="comment">// add an event listener to textarea</span>
+text.addEventListener("input", () => {
+  <span class="comment">// get the content of the textarea content</span>
+  const content = text.value
+  <span class="comment">// split the content into an array of words</span>
+  const rawWordArray = content.split(" ")
+  <span class="comment">// filter the array of words to remove any empty strings which you get when pressing space</span>
+  const filteredWordArray = rawWordArray.filter(item => {return item.length > 0})
+  <span class="comment">// set the word count to be the length of the filtered array</span>
+  wordCounter.innerText = filteredWordArray.length
+  <span class="comment">// update the value of the counter to the length of the textarea content</span>
+  counter.innerText = content.length
+  <span class="comment">// due to emojis need to count the individual letters rather than the length</span>
+  let emojiCount = 0
+  for (let letter of content) {
+    emojiCount ++
+  }
+  emojiCounter.innerText = emojiCount
+});
+  </pre>
+      <h2>Explanation</h2>
+      <p>
+        The simple answer to this is <code>content.split(" ").length</code>,
+        which takes the content and splits it on every space.
+      </p>
+      <p>
+        This however does not give a correct answer as if a word is typed and
+        the a <em>space</em> the array becomes <code>["word", ""]</code> so the
+        length is 2 but there is only 1 word.
+      </p>
+      <p>
+        To overcome this I have filtered out any strings in the array that have
+        a length of <strong>0</strong>.
+        <code>wordArray.filter(word => { return word.length > 0 })</code>
+      </p>
     </main>
     <footer></footer>
     <script src="./index.js"></script>
