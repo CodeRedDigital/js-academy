@@ -44,6 +44,62 @@
     </header>
     <main>
       <!-- Project HTML Here -->
+      <label for="text">Enter your text below.</label>
+      <textarea id="text" aria-live="off"></textarea>
+
+      <p>
+        You've written <strong><span id="word-count">0</span> words</strong> and
+        <strong><span id="character-count">0</span> characters</strong>.
+      </p>
+      <p aria-live="polite" aria-atomic="true">
+        You've <em>truly</em> written
+        <strong><span id="true-word-count">0</span> words</strong> and
+        <strong><span id="emoji-count">0</span> characters</strong>.
+      </p>
+      <h2>Code</h2>
+      <pre>
+<span class="comment">// add <em><abbr title="Accessible Rich Internet Applications">ARIA</abbr></em> roles into the <abbr title="Hyper Text Markup Language">HTML</abbr></span>
+&lt;p aria-live="polite" aria-atomic="true"&gt;
+  You've &lt;em&gt;truly&lt;/em&gt; written 
+  &lt;strong&gt;&lt;span id="true-word-count"&gt;0&lt;/span&gt; words&lt;/strong&gt; 
+  and 
+  &lt;strong&gt;&lt;span id="emoji-count"&gt;0&lt;/span&gt; characters&lt;/strong&gt;.
+&lt;/p&gt;
+  </pre>
+      <h2>Explanation</h2>
+      <p>
+        In this workshop I am adding in, two,
+        <abbr title="Accessible Rich Internet Applications">ARIA</abbr> roles
+        that help Screen Readers announce the updates to the page.
+      </p>
+      <h3><code>aria-live</code></h3>
+      <p>
+        <code>aria-live</code> tells the screen reader to actively watch this
+        HTML element on the page and announce when this element is updated. This
+        attribute has 3 different settings:
+      </p>
+      <ul>
+        <li>
+          <code>aria-live="off"</code> - do not announce changes to this element
+        </li>
+        <li>
+          <code>aria-live="polite"</code> - announce the changes to this element
+          but wait until the screen reader has finished its current task
+        </li>
+        <li>
+          <code>aria-live="assertive"</code> - announce the changes to this
+          element immediately
+        </li>
+      </ul>
+      <h3><code>aria-atomic</code></h3>
+      <p>
+        <code>aria-atomic</code> tells the screen reader to watch for changes of
+        this element and all of the child element.
+      </p>
+      <p>
+        In this example it is important as the change is not happening on the
+        paragraph but within a span inside the paragraph.
+      </p>
     </main>
     <footer></footer>
     <script src="./index.js"></script>
