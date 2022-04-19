@@ -44,13 +44,68 @@ a:hover, a:focus {
   color: var(--white-colour);
   background-color: var(--primary-colour);
 }
-pre {
+pre, blockquote {
   color: var(--secondary-colour);
   border: 1px solid var(--secondary-colour);
   border-radius: 0 0 2rem 0;
   padding: 1rem;
 }
+
+blockquote::before {
+  content: open-quote;
+  font-size: 2rem;
+}
+
 #output {
   font-family: var(--monospace);
   color: var(--secondary-colour);
+}
+.update {
+  color: var(--primary-colour);
+}
+
+/* Buttons */
+
+button {
+    font-size: 1.44rem;
+    font-family: var(--monospace);
+    padding: 1rem;
+    margin: 0.83rem;
+    border-radius: 0.58rem 0.58rem 1.44rem 0.58rem;
+    filter: drop-shadow(0px 10px 20px rgba(11, 9, 9, 0.7));
+}
+
+button:disabled, input[type="submit"]:disabled {
+    opacity: 50%;
+    filter: none;
+}
+
+button:hover:not(:disabled), button:focus:not(:disabled) {
+    filter: drop-shadow(0px 5px 10px rgba(11, 9, 9, 0.5));
+    filter: var(--normal-drop-shadow);
+}
+
+button, button:hover, button:focus {
+    text-decoration: none;
+}
+
+button:active:not(:disabled) {
+    position: relative;
+    top: 1px;
+    transform: scale(0.98);
+}
+
+button.primary, button {
+    color: var(--white-colour);
+    background-color: var(--primary-colour);
+}
+
+button.secondary {
+    background-color: var(--secondary-colour);
+}
+
+button.tertiary {
+    background-color: rgba(255, 191, 0, 1);;
+    background-color: var(--tertiary-colour);
+    color: var(--black-colour);
 }
