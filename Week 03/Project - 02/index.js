@@ -12,6 +12,7 @@ const ronify = () => {
     throw response.status
   }).then(function (data){
     if (ronisms.includes(data[0])){
+      console.log("Duplicate detected")
       ronify()
     } else {
       if (ronisms.length === 50) {
