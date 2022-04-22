@@ -38,7 +38,7 @@
       <button title="Button to fetch new Ron Swanson Quote" id="get-quote">More Ron</button>
     </p>
       <h2>Code</h2>
-      <p>The majoirty of the code is <a href="https://codepen.io/CodeRedDigital/pen/gOooGjR">the same as yesterday's</a>, so here I am only showing the new code</p>
+      <p>The majority of the code is <a href="https://codepen.io/CodeRedDigital/pen/gOooGjR">the same as yesterday's</a>, so here I am only showing the new code</p>
       <pre>
     const ronQuote = document.querySelector("#ronism")
     const ronifyBtn = document.querySelector("#get-quote")
@@ -95,14 +95,14 @@
       </pre>
       <h3>after</h3>
       <pre>
-    const ronify = <strong><code>async</code></rong></strong> () {
+    const ronify = <strong><code>async</code></strong></strong> () {
       <span class="comment">// whatever the function does</span>
     }
       </pre>
       <h3>error handling</h3>
       <p>In order to deal with any errors, such as <em>bad response</em> or <em>duplication of a quote</em>, I have included <code>try</code> and <code>catch</code> blocks. Simply this says, <em>try</em> this and if it doesn't work <em>catch</em> it here and do this.</p>
     <pre>
-    const ronify = <strong><code>async</code></rong></strong> () {
+    const ronify = <strong><code>async</code></strong></strong> () {
       try {
         <span class="comment">// thing to do</span>
       }
@@ -114,7 +114,7 @@
       <h2>💡 Lightbulb moment</h2>
       <p>Today I had a lightbulb moment and something became clear to me, it may seem simple to others but not me.</p>
       <p>I have been looking at responses from the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a></code> and trying to add on to it <code>.json</code> file extension and assuming that it would convert the response to JSON. This is not the case and something that you pick up when looking at answers on StackOverFlow, especially when dyslexic and not reading things correctly. It works when I copy & paste but not when I write it myself.</p>
-      <p>The reason for this is I had been, wrongly, assumming that <code>.json</code> was a file extention. It is NOT! It is a <strong>response method</strong> of the Fetch API, this means that is a built in function for responses of the Fetch API and this also means that it needs the brackets at the end of the method name, <code>response.json()</code></p>
+      <p>The reason for this is I had been, wrongly, assuming that <code>.json</code> was a file extension. It is NOT! It is a <strong>response method</strong> of the Fetch API, this means that is a built in function for responses of the Fetch API and this also means that it needs the brackets at the end of the method name, <code>response.json()</code></p>
       <h3>Response Methods</h3>
     <figure>
       <blockquote>A method is a function which is a property of an object. There are two kind of methods: Instance Methods which are built-in tasks performed by an object instance, or Static Methods which are tasks that are called directly on an object constructor.</blockquote>
