@@ -51,6 +51,10 @@ pre, blockquote {
   padding: 1rem;
 }
 
+pre {
+  overflow: scroll;
+}
+
 blockquote::before {
   content: open-quote;
   font-size: 2rem;

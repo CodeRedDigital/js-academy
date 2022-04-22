@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggle Password Visibility</title>
+    <link href="../../styles/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <div class="header-group">
+      <h1>Async Await Random Ron (no repeat)</h1>
+      <h2>Well for 50 times anyway</h2>
+      </div>
+      <svg width="52" height="52" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0)">
+    <ellipse cx="19.0834" cy="18.9167" rx="18.75" ry="18.75" fill="#D0021B"/>
+    <path d="M7.64045 18.6661L12.2257 21.2074C12.4559 21.3363 12.6078 21.4514 12.6815 21.5527C12.7597 21.6539 12.7989 21.7828 12.7989 21.9394C12.7989 22.1373 12.7275 22.31 12.5848 22.4573C12.4421 22.6 12.2764 22.6714 12.0876 22.6714C11.9633 22.6714 11.7769 22.6023 11.5283 22.4642L4.69869 18.6661L11.5283 14.8681C11.7769 14.7346 11.961 14.6678 12.0807 14.6678C12.2741 14.6678 12.4421 14.7392 12.5848 14.8819C12.7275 15.0246 12.7989 15.195 12.7989 15.3929C12.7989 15.5495 12.7597 15.6784 12.6815 15.7796C12.6078 15.8809 12.4559 15.996 12.2257 16.1249L7.64045 18.6661ZM21.4759 13.929L16.939 23.7072C16.8239 23.9512 16.7203 24.11 16.6282 24.1837C16.5085 24.2803 16.3635 24.3287 16.1932 24.3287C15.9998 24.3287 15.8318 24.2596 15.6891 24.1215C15.551 23.9834 15.4819 23.8269 15.4819 23.6519C15.4819 23.5276 15.5371 23.3458 15.6476 23.1064L20.1984 13.3351C20.3135 13.0911 20.4148 12.9323 20.5022 12.8586C20.6265 12.7619 20.7715 12.7136 20.9373 12.7136C21.1306 12.7136 21.2964 12.7826 21.4345 12.9207C21.5726 13.0543 21.6416 13.2085 21.6416 13.3834C21.6416 13.5077 21.5864 13.6896 21.4759 13.929ZM29.49 18.6661L24.9047 16.1249C24.6745 15.996 24.5203 15.8809 24.4421 15.7796C24.3684 15.6784 24.3316 15.5495 24.3316 15.3929C24.3316 15.195 24.4029 15.0246 24.5456 14.8819C24.6884 14.7392 24.8564 14.6678 25.0497 14.6678C25.1694 14.6678 25.3536 14.7346 25.6022 14.8681L32.4318 18.6661L25.6022 22.4642C25.3536 22.6023 25.1694 22.6714 25.0497 22.6714C24.8564 22.6714 24.6884 22.6 24.5456 22.4573C24.4029 22.3146 24.3316 22.1419 24.3316 21.9394C24.3316 21.7828 24.3684 21.6539 24.4421 21.5527C24.5203 21.4514 24.6745 21.3363 24.9047 21.2074L29.49 18.6661Z" fill="white"/>
+    </g>
+    <defs>
+    <clipPath id="clip0">
+    <rect width="37.5" height="37.5" fill="white" transform="translate(0.333374 0.166672)"/>
+    </clipPath>
+    </defs>
+    </svg>
+    
+    </header>
+    <main class="wrapper">
+    <!-- html goes here -->
+      <figure>
+        <blockquote id="ronism" aria-live="polite">
+          Click <em>More Ron</em> to get your first <strong>Ronism</strong>
+        </blockquote>
+        <figcaption>Ron Swanson <cite><a href="https://en.wikipedia.org/wiki/Parks_and_Recreation">Parks & Recreation</a></cite></figcaption>
+    </figure>
+    <p>
+      <button title="Button to fetch new Ron Swanson Quote" id="get-quote">More Ron</button>
+    </p>
+      <h2>Code</h2>
+      <p>The majoirty of the code is <a href="https://codepen.io/CodeRedDigital/pen/gOooGjR">the same as yesterday's</a>, so here I am only showing the new code</p>
+      <pre>
+    const ronQuote = document.querySelector("#ronism")
+    const ronifyBtn = document.querySelector("#get-quote")
+    const ronisms = []
+    <span class="comment">// create an <em>async</em> function</span>
+    const ronify = async () => {
+      <span class="comment">// set up a try block to handle the function</span>
+      try {
+        <span class="comment">// assign a variable that waits for the fetch API to respond</span>
+        const response = await fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes')
+        <span class="comment">// check the response is OK</span>
+        if (!response.ok) {
+          console.log("There is an error")
+          <span class="comment">// if NOT OK throw error for the catch block to handle</span>
+          throw response.status
+        }
+        <span class="comment">// create a <em>quote</em> variable that waits for response and convert it to json</span>
+        const quote = await response.json()
+        <span class="comment">// check the new quote has not been seen before</span>
+        if (ronisms.includes(quote[0])) {
+          <span class="comment">// if the quote has been seen before throw a duplication warning for the catch block to handle</span>
+          throw "Duplication"
+        }
+        <span class="comment">// check the number of quotes and if 50 remove the first</span>
+        else if (ronisms.length === 50) {
+          ronisms.shift()
+        }
+        <span class="comment">// add new quote to array</span>
+        ronisms.push(quote[0])
+        <span class="comment">// update the quote being displayed</span>
+        ronQuote.textContent = quote[0]
+      } 
+      <span class="comment">// set up a catch block to handle any errors from the function</span>
+      catch (error) {
+        <span class="comment">// check if the error is a duplication, if so restart the function</span>
+        if (error === "Duplication") {
+          console.warn("This quote has been seen before")
+          ronify()
+        }
+        console.warn(error)
+      }
+    }
+    ronifyBtn.addEventListener("click", ronify)
+    ronify()
+      </pre>
+      <h2>Explanation</h2>
+      <p>In this workshop I have converted <a href="../Project - 02/random-ron-no-repeat.html">yesterday's workshop</a> to be an <strong>asynchronous function</strong>, using <code>async await</code>.</p>
+      <p>Firstly the function declaration was converted to an asynchronous function.</p>
+      <h3>before</h3>
+      <pre>
+    const ronify = () {
+      <span class="comment">// whatever the function does</span>
+    }
+      </pre>
+      <h3>after</h3>
+      <pre>
+    const ronify = <strong><code>async</code></rong></strong> () {
+      <span class="comment">// whatever the function does</span>
+    }
+      </pre>
+      <h3>error handling</h3>
+      <p>In order to deal with any errors, such as <em>bad response</em> or <em>duplication of a quote</em>, I have included <code>try</code> and <code>catch</code> blocks. Simply this says, <em>try</em> this and if it doesn't work <em>catch</em> it here and do this.</p>
+    <pre>
+    const ronify = <strong><code>async</code></rong></strong> () {
+      try {
+        <span class="comment">// thing to do</span>
+      }
+      catch {
+        <span class="comment">// thing to do if it fails</span>
+      }
+    }
+      </pre>
+      <h2>💡 Lightbulb moment</h2>
+      <p>Today I had a lightbulb moment and something became clear to me, it may seem simple to others but not me.</p>
+      <p>I have been looking at responses from the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a></code> and trying to add on to it <code>.json</code> file extension and assuming that it would convert the response to JSON. This is not the case and something that you pick up when looking at answers on StackOverFlow, especially when dyslexic and not reading things correctly. It works when I copy & paste but not when I write it myself.</p>
+      <p>The reason for this is I had been, wrongly, assumming that <code>.json</code> was a file extention. It is NOT! It is a <strong>response method</strong> of the Fetch API, this means that is a built in function for responses of the Fetch API and this also means that it needs the brackets at the end of the method name, <code>response.json()</code></p>
+      <h3>Response Methods</h3>
+    <figure>
+      <blockquote>A method is a function which is a property of an object. There are two kind of methods: Instance Methods which are built-in tasks performed by an object instance, or Static Methods which are tasks that are called directly on an object constructor.</blockquote>
+      <figcaption><cite><a href="https://developer.mozilla.org/en-US/docs/Glossary/Method">JavaScript Methods</a></cite></figcaption>
+    </figure>
+    <p>There are a number of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response#methods">response methods for the Fetch API</a>. The one I have used in this example is the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/json">https://developer.mozilla.org/en-US/docs/Web/API/Response/json</a></p>
+    </main>
+    <footer></footer>
+    <script src="./index.js"></script>
+  </body>
+</html>
