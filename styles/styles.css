@@ -29,9 +29,17 @@ main {
   min-height: 70vh;
   padding: 1rem 0;
 }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
 footer {
   min-height: 15vh;
   background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 code, pre {
   font-family: var(--monospace);
@@ -151,4 +159,28 @@ button.tertiary {
   min-height: 0;
   background-color: var(--white);
   font-family: var(--monospace);
+}
+
+/* Monster Shuffle Grid */
+
+/**
+ * A simple grid layout
+ */
+.row {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	text-align: center;
+}
+
+.grid {
+	min-height: 6em;
+	padding: 1em;
+}
+
+/**
+ * Make sure images scale
+ */
+img {
+	height: auto;
+	max-width: 100%;
 }
