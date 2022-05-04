@@ -123,9 +123,9 @@ const openDoor = (event) => {
   <img src="https://assets.codepen.io/5342839/${monsterData.svg}" alt="${monsterData.alt}" />
   <figcaption>${monsterData.title}</figcaption>
   `
+  currentDoor.classList.remove("door")
   currentDoor.innerHTML = monster
   if (monsterData.id !== "sock"){
-    console.log("monster")
     currentScore++
     current.textContent = currentScore
     if (currentScore > highScore) {
@@ -134,11 +134,17 @@ const openDoor = (event) => {
     }
   } else {
     console.log("Sock")
+    const allButtons = app.querySelectorAll("button")
+    console.log(allButtons)
+    allButtons.forEach((button) => {
+      button.setAttribute('disabled', "");
+    });
   }
 }
 
 const monsterShuffle = () => {
-  highest.textContent = "0"
+  currentScore = 0
+  current.textContent = currentScore
   shuffleButton.disabled = true
   app.innerHTML = `<div class="lds-dual-ring"></div>`
   app.classList.add("loading")

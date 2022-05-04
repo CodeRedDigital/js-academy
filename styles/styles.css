@@ -212,3 +212,7 @@ scores {
   .scores > h2 {
   text-align: center;
   }
+
+  details {
+    text-align: center;
+  }
