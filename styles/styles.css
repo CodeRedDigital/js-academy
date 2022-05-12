@@ -205,7 +205,7 @@ scores {
   }
   .score-wrapper {
   display: flex;
-  flex-basis: ;
+  flex-basis: auto;
   flex-direction: row;
   justify-content: space-around;
   }

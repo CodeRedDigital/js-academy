@@ -28,7 +28,7 @@ form.addEventListener("input", (event) => {
   console.log(JSON.stringify(serialize(data)))
 })
 form.addEventListener("submit", () => {
-  window.localStorage.removeItem("formData")
+  localStorage.removeItem("formData")
 })
 const fillInputs = () => {
   const data = JSON.parse(localStorage.getItem("formData"))
