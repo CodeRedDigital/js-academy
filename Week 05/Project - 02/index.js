@@ -2,6 +2,10 @@
 const monsterGrid =  document.querySelector("#monsterGrid")
 const shuffleButton = document.querySelector("#shuffleButton")
 const app = document.querySelector("#app")
+const highest = document.querySelector("#highest")
+const current = document.querySelector("#current")
+let highScore = 0
+let currentScore = 0
 // The monsters and socks
 let monsters = [
   {
@@ -103,21 +107,58 @@ function shuffle (array) {
 	return array;
 
 }
+const openDoor = (event) => {
+  const element = event.target
+  if (!element.matches('button')) {
+    return
+  }
+  const currentDoor = element.closest('figure')
+  const monsterData = {
+    "id": currentDoor.dataset.id,
+    "title": currentDoor.dataset.title,
+    "svg": currentDoor.dataset.svg,
+    "alt": currentDoor.dataset.alt,
+  }
+  const monster = `
+  <img src="https://assets.codepen.io/5342839/${monsterData.svg}" alt="${monsterData.alt}" />
+  <figcaption>${monsterData.title}</figcaption>
+  `
+  currentDoor.classList.remove("door")
+  currentDoor.innerHTML = monster
+  if (monsterData.id !== "sock"){
+    currentScore++
+    current.textContent = currentScore
+    if (currentScore > highScore) {
+      highScore = currentScore
+      highest.textContent = highScore
+    }
+  } else {
+    console.log("Sock")
+    const allButtons = app.querySelectorAll("button")
+    console.log(allButtons)
+    allButtons.forEach((button) => {
+      button.setAttribute('disabled', "");
+    });
+  }
+}
 
 const monsterShuffle = () => {
+  currentScore = 0
+  current.textContent = currentScore
   shuffleButton.disabled = true
   app.innerHTML = `<div class="lds-dual-ring"></div>`
   app.classList.add("loading")
   const shuffledMonsters =  shuffle(Array.from(monsters))
   const monsterHTML = shuffledMonsters.map((monster) => {
-    return `<figure class="grid" data-monsterId="${monster.id}" data-monsterSvg="${monster.svg}" data-monsterAlt="${monster.alt}" data-monsterTitle="${monster.title}"   >
-      <img src="https://assets.codepen.io/5342839/door.svg" alt="click door to open" />
-      <figcaption>${monster.title}</figcaption>
+    return `<figure class="grid door" data-id="${monster.id}" data-svg="${monster.svg}" data-alt="${monster.alt}" data-title="${monster.title}"   >
+      <img src="./door.svg" alt="click door to open" />
+      <button class="small" >Open Door</button>
     </figure>`
   }).join('')
   app.classList.remove("loading")
   app.innerHTML = `<div class="row">${monsterHTML}</div>`
   shuffleButton.disabled = false
+  app.addEventListener("click", openDoor)
 }
 shuffleButton.addEventListener("click", monsterShuffle) 
 monsterShuffle()

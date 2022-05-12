@@ -216,16 +216,3 @@ scores {
   details {
     text-align: center;
   }
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  font-size: 1.6rem;
-  color: var(--secondary-colour)
-}
-
-input, textarea {
-  font-size: 1.8rem;
-}
