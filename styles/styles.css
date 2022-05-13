@@ -232,9 +232,11 @@ input, textarea {
 
 div.status {
   opacity: 0;
-  transition: 750ms;
+  font-size: 0.5rem;
+  transition: all 1s ease-out;
 }
 
 div.status.temporary-status {
   opacity: 1;
+  font-size: 1.1rem;
 }
