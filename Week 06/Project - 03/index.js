@@ -22,9 +22,7 @@ function serialize (data) {
 let typingDelay
 const form = document.querySelector("#save-me")
 const formButton = form.querySelector("[type='submit']")
-console.log(formButton)
 const showStatus = () => {
-  console.log("form has been saved")
   const statusUpdate = document.createElement('div')
   statusUpdate.setAttribute('aria-live', 'polite')
   statusUpdate.classList.add('status')
@@ -66,6 +64,7 @@ const clearInputs = () => {
 }
 const fillInputs = () => {
   const data = JSON.parse(localStorage.getItem("formData"))
+  if (!data) {return}
   const elements = form.elements
   for (i = 0; i < elements.length; i++) {
     if (elements[i].name) {
