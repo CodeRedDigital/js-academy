@@ -205,7 +205,7 @@ scores {
   }
   .score-wrapper {
   display: flex;
-  flex-basis: auto;
+  flex-basis: ;
   flex-direction: row;
   justify-content: space-around;
   }
@@ -216,3 +216,25 @@ scores {
   details {
     text-align: center;
   }
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 1.6rem;
+  color: var(--secondary-colour)
+}
+
+input, textarea {
+  font-size: 1.8rem;
+}
+
+div.status {
+  opacity: 0;
+  transition: 750ms;
+}
+
+div.status.temporary-status {
+  opacity: 1;
+}
